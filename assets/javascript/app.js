@@ -2,7 +2,7 @@ $(document).ready(function() {
 
 var questions = [
     {
-    q: "In 'Happy Gilmore', why does Happy become a golfer?",
+    q: "In Happy Gilmore, why does Happy become a golfer?",
     options: ["Attract women", "Pay back his loan sharks", "Impress his boss", "Buy his Grandma's house"],
     images: "assets/images/golfball.jpg",
     answer: "Buy his Grandma's house",
@@ -14,49 +14,49 @@ var questions = [
     answer: "Shooter McGavin",
     },
     {
-    question: "In 'Billy Madison', who did Billy fall in love with?",
+    q: "In Billy Madison, who did Billy fall in love with?",
     options: ["His 3rd grade teacher", "His principal", "His classmate", "His maid"],
     images: "assets/images/billymad.jpg",
     answer: "His 3rd grade teacher",
     },
     {
-    question: "In 'The Wedding Singer', what was Robbie Hart's dream job?",
+    q: "In The Wedding Singer, what was Robbie Hart's dream job?",
     options: ["Barber", "Model", "Rockstar", "Boy band member"],
     images: "assets/images/wedding.jpg",
     answer: "Rockstar",
     },
     {
-    question: "In 'Big Daddy', where did Kevin's girlfriend used to work?",
+    q: "In Big Daddy, where did Kevin's girlfriend used to work?",
     options: ["Denny's", "Bendle's Bowling Alley", "Hooters", "Strip club"],
     images: "assets/images/hooters.jpg",
     answer: "Hooters",
     },
     {
-    question: "In 'The Water Boy', what team did Bobby Boucher play for?",
+    q: "In The Water Boy, what team did Bobby Boucher play for?",
     options: ["Western Louisiana Gators", "Notre Dame Fighting Irish", "Louisiana State University Tigers", "South Central LA State University Mud Dogs"],
     images: "assets/images/waterboy.jpg",
     answer: "South Central LA State University Mud Dogs",
     },
     {
-    question: "What was 'Mr. Deeds' dream job?",
-    coptions: ["Sports Writer", "Comedian", "Greeting Card Writer", "Baseball Coach"],
+    q: "What was Mr. Deeds dream job?",
+    options: ["Sports Writer", "Comedian", "Greeting Card Writer", "Baseball Coach"],
     images: "assets/images/deeds.jpg",
     answer: "Greeting Card Writer",
     },
     {
-    question: "Who played his counterpart, Jill, in the 'Jack and Jill' film?",
+    q: "Who played his counterpart, Jill, in the Jack and Jill film?",
     options: ["Dana Carvey", "David Spade", "Rob Schneider", "Adam Sandler"],
     images: "assets/images/jackjill.jpeg",
     answer: "Adam Sandler",
     },
     {
-    question: "Why do Chuck and Larry get married in 'I Now Prononce You Chuck and Larry'?",
+    q: "Why do Chuck and Larry get married in I Now Prononce You Chuck and Larry?",
     options: ["Insurance Benefits", "Drunk Accident", "True Love", "Tired of Being Single"],
     images: "assets/images/chucklarry.jpg",
     answer: "Insurance Benefits",
     },
     {
-    question: "How many Adam Sandler movies has Drew Barrymore been his love interest?",
+    q: "How many Adam Sandler movies has Drew Barrymore been his love interest?",
     options: ["1", "2", "3", "5"],
     images: "assets/images/drew.jpg",
     answer: "3",
