@@ -1,26 +1,4 @@
-    // Needs:
-    // background image
-    // DIV container: title, questions, answers, timer
-    // First page has START button
-        // similar to jewels buttons -- on click function
-    // First Question appears , 1 per slide -- 30 sec timer at top
-    // countdown timer: 30 seconds 
-    // Answers : on click function for each multiple choice --> HOVER STAY (css) -- 
-    // for all the buttons, 4 buttons, each button can have a value property >> false, false, false, true
-    // $(this).val() -- call the function and assign T/F in the array
-    // Automatic page -- Image, Whether Player answered Correct/Incorrect : with correct answer
-    // call REMOVE function -- to the div using jquery
-    // Timer happens 
-    // Next Question appears w Fresh 30 sec timer
-    // reset function game -- score -- Correct, Incorrect, Unanswered
-        // Start Over? button
-        //on click function
-
-    // Questions:
-
-    // Interval, Slideshow, SimpleTimer
-
-// $(document).ready(function() {
+$(document).ready(function() {
 
 var questions = [
     {
@@ -180,5 +158,5 @@ function showScore (){
 
 
 
-// });
+});
 
