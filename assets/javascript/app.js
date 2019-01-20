@@ -68,6 +68,7 @@ var questions = [
 
 
 var $app = $('#app');
+var unanswered = 0;
 var correct = 0;
 var incorrect = 0;
 var questionIndex = 0;
@@ -83,6 +84,7 @@ function init(){
     correct = 0;
     incorrect = 0;
     questionIndex = 0;
+    
 
 }
 
@@ -133,7 +135,7 @@ function showAnswer(userAnswer) {
     $app.append('<h2>Answer</h2>');
     $app.append('<h3>Correct Answer is: ' + question.answer + '</h3>');
     $app.append('<h3>You Selected: ' + userAnswer + '</h3>');
-    if (userAnswer === "undefined") {
+    if (remainingTime === 0) {
         $app.append('<h2>Time Out!</h2>');
         incorrect++;
     } else if (userAnswer === question.answer) {
@@ -148,6 +150,7 @@ function showAnswer(userAnswer) {
     } else {
         setTimeout(showScore, 5000)
     }
+    clearInterval(timer);
 }
 
 function showScore (){
