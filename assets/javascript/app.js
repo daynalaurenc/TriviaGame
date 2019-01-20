@@ -3,9 +3,9 @@ $(document).ready(function() {
 var questions = [
     {
     q: "In Happy Gilmore, why does Happy become a golfer?",
-    options: ["Attract women", "Pay back his loan sharks", "Impress his boss", "Buy his Grandma's house"],
+    options: ["To Attract Women", "To Pay Back His Loan Sharks", "To Impress His Boss", "To Buy His Grandma's House"],
     images: "assets/images/golfball.jpg",
-    answer: "Buy his Grandma's house",
+    answer: "To Buy His Grandma's House",
     },
     {
     q: "What is the name of Happy Gilmore's rival?",
@@ -15,9 +15,9 @@ var questions = [
     },
     {
     q: "In Billy Madison, who did Billy fall in love with?",
-    options: ["His 3rd grade teacher", "His principal", "His classmate", "His maid"],
+    options: ["His 3rd Grade Teacher", "His Principal", "His Classmate", "His Maid"],
     images: "assets/images/billymad.jpg",
-    answer: "His 3rd grade teacher",
+    answer: "His 3rd Grade Teacher",
     },
     {
     q: "In The Wedding Singer, what was Robbie Hart's dream job?",
@@ -64,6 +64,9 @@ var questions = [
 
 ];
 
+// var image = $("<img>").attr("src", imgURL);
+
+
 var $app = $('#app');
 var correct = 0;
 var incorrect = 0;
@@ -71,7 +74,6 @@ var questionIndex = 0;
 var remainingTime;
 var timer;
 
-init();
 
 function init(){
     var $start = $('<button>Start</button>');
@@ -83,6 +85,8 @@ function init(){
     questionIndex = 0;
 
 }
+
+init();
 
 
 function displayClock() {
@@ -129,7 +133,7 @@ function showAnswer(userAnswer) {
     $app.append('<h2>Answer</h2>');
     $app.append('<h3>Correct Answer is: ' + question.answer + '</h3>');
     $app.append('<h3>You Selected: ' + userAnswer + '</h3>');
-    if (userAnswer === undefined) {
+    if (userAnswer === "undefined") {
         $app.append('<h2>Time Out!</h2>');
         incorrect++;
     } else if (userAnswer === question.answer) {
