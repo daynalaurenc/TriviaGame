@@ -20,149 +20,165 @@
 
     // Interval, Slideshow, SimpleTimer
 
-$(document).ready(function() {
+// $(document).ready(function() {
 
-var correct = 0;
-var incorrect = 0;
-var unanswered = 0;
-
-var number = 30;
-var intervalId;
-
-var themeQuestion = [{
-    question: "In 'Happy Gilmore', why does Happy become a golfer?",
-    choices: ["Attract women", "Pay back his loan sharks", "Impress his boss", "Buy his Grandma's house"],
-    images: ["assets/images/golfball.jpg"],
-    validAnswer: [3],
+var questions = [
+    {
+    q: "In 'Happy Gilmore', why does Happy become a golfer?",
+    options: ["Attract women", "Pay back his loan sharks", "Impress his boss", "Buy his Grandma's house"],
+    images: "assets/images/golfball.jpg",
+    answer: "Buy his Grandma's house",
     },
     {
-    question: "What is the name of Happy Gilmore's rival?",
-    choices: ["Mikey Driver", "Shooter McGavin", "Angry Gillmore", "Lion Forest"],
-    images: ["assets/images/shooter.jpg"],
-    validAnswer: [1],
+    q: "What is the name of Happy Gilmore's rival?",
+    options: ["Mikey Driver", "Shooter McGavin", "Angry Gillmore", "Lion Forest"],
+    images: "assets/images/shooter.jpg",
+    answer: "Shooter McGavin",
     },
     {
     question: "In 'Billy Madison', who did Billy fall in love with?",
-    choices: ["His 3rd grade teacher", "His principal", "His classmate", "His maid"],
-    images: ["assets/images/billymad.jpg"],
-    validAnswer: [0],
+    options: ["His 3rd grade teacher", "His principal", "His classmate", "His maid"],
+    images: "assets/images/billymad.jpg",
+    answer: "His 3rd grade teacher",
     },
     {
     question: "In 'The Wedding Singer', what was Robbie Hart's dream job?",
-    choices: ["Barber", "Model", "Rockstar", "Boy band member"],
-    images: ["assets/images/wedding.jpg"],
-    validAnswer: [2],
+    options: ["Barber", "Model", "Rockstar", "Boy band member"],
+    images: "assets/images/wedding.jpg",
+    answer: "Rockstar",
     },
     {
     question: "In 'Big Daddy', where did Kevin's girlfriend used to work?",
-    choices: ["Denny's", "Bendle's Bowling Alley", "Hooters", "Strip club"],
-    images: ["assets/images/hooters.jpg"],
-    validAnswer: [2],
+    options: ["Denny's", "Bendle's Bowling Alley", "Hooters", "Strip club"],
+    images: "assets/images/hooters.jpg",
+    answer: "Hooters",
     },
     {
     question: "In 'The Water Boy', what team did Bobby Boucher play for?",
-    choices: ["Western Louisiana Gators", "Notre Dame Fighting Irish", "Louisiana State University Tigers", "South Central LA State University Mud Dogs"],
-    images: ["assets/images/waterboy.jpg"],
-    validAnswer: [3],
+    options: ["Western Louisiana Gators", "Notre Dame Fighting Irish", "Louisiana State University Tigers", "South Central LA State University Mud Dogs"],
+    images: "assets/images/waterboy.jpg",
+    answer: "South Central LA State University Mud Dogs",
     },
     {
     question: "What was 'Mr. Deeds' dream job?",
-    choices: ["Sports Writer", "Def Jam Comedian", "Greeting Card Writer", "Baseball Coach"],
-    images: ["assets/images/deeds.jpg"],
-    validAnswer: [2],
+    coptions: ["Sports Writer", "Comedian", "Greeting Card Writer", "Baseball Coach"],
+    images: "assets/images/deeds.jpg",
+    answer: "Greeting Card Writer",
     },
     {
     question: "Who played his counterpart, Jill, in the 'Jack and Jill' film?",
-    choices: ["Dana Carvey", "David Spade", "Rob Schneider", "Adam Sandler"],
-    images: ["assets/images/jackjill.jpeg"],
-    validAnswer: [3],
+    options: ["Dana Carvey", "David Spade", "Rob Schneider", "Adam Sandler"],
+    images: "assets/images/jackjill.jpeg",
+    answer: "Adam Sandler",
     },
     {
     question: "Why do Chuck and Larry get married in 'I Now Prononce You Chuck and Larry'?",
-    choices: ["Insurance Benefits", "Drunk Accident", "True Love", "Tired of Being Single"],
-    images: ["assets/images/chucklarry.jpg"],
-    validAnswer: [0],
+    options: ["Insurance Benefits", "Drunk Accident", "True Love", "Tired of Being Single"],
+    images: "assets/images/chucklarry.jpg",
+    answer: "Insurance Benefits",
     },
     {
     question: "How many Adam Sandler movies has Drew Barrymore been his love interest?",
-    choices: ["1", "2", "3", "5"],
-    images: ["assets/images/drew.jpg"],
-    validAnswer: [2],
+    options: ["1", "2", "3", "5"],
+    images: "assets/images/drew.jpg",
+    answer: "3",
     },
-}];
 
-});
+];
+
+var $app = $('#app');
+var correct = 0;
+var incorrect = 0;
+var questionIndex = 0;
+var remainingTime;
+var timer;
+
+init();
+
+function init(){
+    var $start = $('<button>Start</button>');
+    $start.on('click', showQuestion);
+    $app.empty();
+    $app.append($start);
+    correct = 0;
+    incorrect = 0;
+    questionIndex = 0;
+
+}
 
 
-// $("#start_button").click(function(){
-// $(this).hide();
-// counter = setInterval(timer, 1000); 
-// displayTrivia();
-// }); 
-
-
-// function timer(){
-// count--;
-// if (count <= 0) {
-//  clearInterval(counter);
-//  return;
-// }
-
-//  $("#timer").html("Time remaining: " + "00:" + count + " secs");
-// }
-
-function timerWrapper() {
-    theClock = setInterval(thirtySeconds, 1000);
-    function thirtySeconds() {
-        if (counter === 0) {
-            clearInterval(theClock);
-            timeoutLoss();
-        }
-        if (counter > 0) {
-            counter--;
-        }
-        $(".timer").html(counter);
+function displayClock() {
+    remainingTime--;
+    if (remainingTime === 0) {
+        clearInterval(timer);
+        showAnswer();
     }
-};
+    $('#clock').text(remainingTime);
+}
 
-// function displayTrivia() {
-// $("#question_div").html(disneyQuestion[0].question);
-// question++;
 
-//   var choicesArr = disneyQuestion[0].choices;
-//   var buttonsArr = [];
+function showQuestion() {
+    remainingTime = 30;
+    $app.empty();
+    var question = questions[questionIndex];
+    var $question = $('<div class="card">'); //'<div>'
+    var $clock = ('<div>Time Remaining: <span id="clock">' + remainingTime + '</span></div>');
+    var $q = $('<h2>' + question.q + '</h2>');
+    var $button;
+    timer = setInterval(displayClock, 1000);
 
-//   for (let i = 0; i < choicesArr.length; i++) {
-//     var button = $('<button>');
-//     button.text(choicesArr[i]);
-//     button.attr('data-id', i);
-//     $('#choices_div').append(button);
-//    }
+    $question.append($clock);
+    $question.append($q);
 
-//   } 
+    for (var i=0; i<question.options.length; i++){
+        $button = $('<button>' + question.options[i] + '</button>');
+        $button.on('click', handleAnswer);
+        
+        $question.append($button);
+    
+    }
+   $app.append($question);
+}
 
-//  $('#choices_div').on('click', 'button', function(e){
-//  userPick = $(this).data("id");
-//  disneyQuestion[0].validAnswer;
-//  if(userPick != disneyQuestion[0].validAnswer) {
+function handleAnswer(){
+    var value = $(this).text();
+        showAnswer(value);
+}
 
-//  $('#choices_div').text("Wrong Answer! The correct answer is Rajah.");
-//  incorrectAnswer++;
+function showAnswer(userAnswer) {
+    var question = questions[questionIndex];
+    $app.empty();
+    $app.append('<h2>Answer</h2>');
+    $app.append('<h3>Correct Answer is: ' + question.answer + '</h3>');
+    $app.append('<h3>You Selected: ' + userAnswer + '</h3>');
+    if (userAnswer === undefined) {
+        $app.append('<h2>Time Out!</h2>');
+        incorrect++;
+    } else if (userAnswer === question.answer) {
+        correct++;
+    } else {
+        incorrect++;
+    }
 
-// } else if (userPick === disneyQuestion[0].validAnswer) {
-// $('#choices_div').text("Correct!!! The pet tiger name is Rajah");
-// correctAnswer++;
+    questionIndex++;
+    if (questionIndex < questions.length) {
+        setTimeout(showQuestion, 5000);
+    } else {
+        setTimeout(showScore, 5000)
+    }
+}
 
-// }
+function showScore (){
+    $app.empty();
+    var $score = $("<h2>Let's See How You Did: </h2>");
+    $app.append($score);
+    var correctAnswer = $('<p>Correct Answers: ' + correct + '</p>');
+    var incorrectAnswer = $('<p>Incorrect Answers: ' + incorrect + '</p>');
+    $app.append(correctAnswer, incorrectAnswer);
+}
+
+
+
 
 // });
 
-
-
-
-
-
-
-
-
-// });
