@@ -2,7 +2,7 @@ $(document).ready(function() {
 
 var questions = [
     {
-    q: "In Happy Gilmore, why does Happy become a golfer?",
+    q: "In 'Happy Gilmore', why does Happy become a golfer?",
     options: ["To Attract Women", "To Pay Back His Loan Sharks", "To Impress His Boss", "To Buy His Grandma's House"],
     images: "assets/images/golfball.jpg",
     answer: "To Buy His Grandma's House",
@@ -14,25 +14,25 @@ var questions = [
     answer: "Shooter McGavin",
     },
     {
-    q: "In Billy Madison, who did Billy fall in love with?",
+    q: "In 'Billy Madison', who did Billy fall in love with?",
     options: ["His 3rd Grade Teacher", "His Principal", "His Classmate", "His Maid"],
     images: "assets/images/billymad.jpg",
     answer: "His 3rd Grade Teacher",
     },
     {
-    q: "In The Wedding Singer, what was Robbie Hart's dream job?",
+    q: "In 'The Wedding Singer', what was Robbie Hart's dream job?",
     options: ["Barber", "Model", "Rockstar", "Boy band member"],
     images: "assets/images/wedding.jpg",
     answer: "Rockstar",
     },
     {
-    q: "In Big Daddy, where did Kevin's girlfriend used to work?",
+    q: "In 'Big Daddy', where did Kevin's girlfriend used to work?",
     options: ["Denny's", "Bendle's Bowling Alley", "Hooters", "Strip club"],
     images: "assets/images/hooters.jpg",
     answer: "Hooters",
     },
     {
-    q: "In The Water Boy, what team did Bobby Boucher play for?",
+    q: "In 'The Water Boy', what team did Bobby Boucher play for?",
     options: ["Western Louisiana Gators", "Notre Dame Fighting Irish", "Louisiana State University Tigers", "South Central LA State University Mud Dogs"],
     images: "assets/images/waterboy.jpg",
     answer: "South Central LA State University Mud Dogs",
@@ -44,27 +44,27 @@ var questions = [
     answer: "Greeting Card Writer",
     },
     {
-    q: "Who played his counterpart, Jill, in the Jack and Jill film?",
+    q: "Who played his counterpart, Jill, in the 'Jack and Jill' film?",
     options: ["Dana Carvey", "David Spade", "Rob Schneider", "Adam Sandler"],
     images: "assets/images/jackjill.jpeg",
     answer: "Adam Sandler",
     },
     {
-    q: "Why do Chuck and Larry get married in I Now Prononce You Chuck and Larry?",
+    q: "Why do Chuck and Larry get married in 'I Now Prononce You Chuck and Larry'?",
     options: ["Insurance Benefits", "Drunk Accident", "True Love", "Tired of Being Single"],
     images: "assets/images/chucklarry.jpg",
     answer: "Insurance Benefits",
     },
     {
     q: "How many Adam Sandler movies has Drew Barrymore been his love interest?",
-    options: ["1", "2", "3", "5"],
+    options: ["One Movie", "Two Movies", "Three Movies", "Five Movies"],
     images: "assets/images/drew.jpg",
-    answer: "3",
+    answer: "Three Movies",
     },
 
 ];
 
-// var image = $("<img>").attr("src", imgURL);
+
 
 
 var $app = $('#app');
@@ -132,15 +132,20 @@ function handleAnswer(){
 function showAnswer(userAnswer) {
     var question = questions[questionIndex];
     $app.empty();
-    $app.append('<h2>Answer</h2>');
+    var img = $('<div id="image"></div>');
+    img.append('<img src=' + question.images + '>');
+    $app.append('<h2>Answer -- </h2>');
     $app.append('<h3>Correct Answer is: ' + question.answer + '</h3>');
     $app.append('<h3>You Selected: ' + userAnswer + '</h3>');
     if (remainingTime === 0) {
-        $app.append('<h2>Time Out!</h2>');
-        incorrect++;
+        $app.append("<h2>Time's Out!</h2>");
+        $app.append(img);
+        unanswered++;
     } else if (userAnswer === question.answer) {
+        $app.append(img);
         correct++;
     } else {
+        $app.append(img);
         incorrect++;
     }
 
@@ -159,7 +164,8 @@ function showScore (){
     $app.append($score);
     var correctAnswer = $('<p>Correct Answers: ' + correct + '</p>');
     var incorrectAnswer = $('<p>Incorrect Answers: ' + incorrect + '</p>');
-    $app.append(correctAnswer, incorrectAnswer);
+    var unAnswered = $('<p>Unanswered: ' + unanswered + '</p>');
+    $app.append(correctAnswer, incorrectAnswer, unAnswered);
 }
 
 

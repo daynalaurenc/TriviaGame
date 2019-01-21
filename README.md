@@ -10,7 +10,8 @@ The objective of the game is for Player to correctly answer Multiple Choice Ques
 * Countdown timer begins 
 * Player reads question and chooses the best suited answer.
 * **NOTE:** Don't linger too long on any 1 question, beware of the timer!
-* Player clicks done at bottom of game once all questions are answered.
-* Game will score Player on: Correct, Incorrect, and Unanswered.
+* Once question is answered/time run's out, Player will be provided with the correct answer, and reminded of his choice.
+* Next question will auto populate.
+* At the end, game will score Player on: Correct, Incorrect, and Unanswered.
 
 ### Enjoy, and Good Luck!
