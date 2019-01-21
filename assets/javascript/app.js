@@ -76,6 +76,7 @@ var remainingTime;
 var timer;
 
 
+
 function init(){
     var $start = $('<button>Start</button>');
     $start.on('click', showQuestion);
@@ -89,6 +90,7 @@ function init(){
 }
 
 init();
+
 
 
 function displayClock() {
@@ -164,7 +166,7 @@ function showAnswer(userAnswer) {
     clearInterval(timer);
 }
  
-function showScore (){
+function showScore () {
     $app.empty();
     var $score = $("<h2>Let's See How You Did -- </h2>");
     $app.append($score);
@@ -172,8 +174,19 @@ function showScore (){
     var incorrectAnswer = $('<p>Incorrect Answers: ' + incorrect + '</p>');
     var unAnswered = $('<p>Unanswered: ' + unanswered + '</p>');
     $app.append(correctAnswer, incorrectAnswer, unAnswered);
+    var $resetButton = $('<button>Play Again?</button>');
+    $resetButton.on('click', resetGame);
+    $app.append($resetButton);
 }
 
+function resetGame() {
+    unanswered = 0;
+    correct = 0;
+    incorrect = 0;
+    questionIndex = 0;
+    remainingTime;
+    timer;
+}
 
 
 
