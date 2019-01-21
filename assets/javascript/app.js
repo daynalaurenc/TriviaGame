@@ -33,9 +33,9 @@ var questions = [
     },
     {
     q: "In 'The Water Boy', what team did Bobby Boucher play for?",
-    options: ["Western Louisiana Gators", "Notre Dame Fighting Irish", "Louisiana State University Tigers", "South Central LA State University Mud Dogs"],
+    options: ["Western Louisiana Gators", "Notre Dame Fighting Irish", "Louisiana State University Tigers", "South Central LA State Uni Mud Dogs"],
     images: "assets/images/waterboy.jpg",
-    answer: "South Central LA State University Mud Dogs",
+    answer: "South Central LA State Uni Mud Dogs",
     },
     {
     q: "What was Mr. Deeds dream job?",
@@ -105,8 +105,8 @@ function showQuestion() {
     remainingTime = 30;
     $app.empty();
     var question = questions[questionIndex];
-    var $question = $('<div class="card">'); //'<div>'
-    var $clock = ('<div>Time Remaining: <span id="clock">' + remainingTime + '</span></div>');
+    var $question = $('<div class="card">'); 
+    var $clock = ('<div id="time">Time Remaining: <span id="clock">' + remainingTime + '</span></div>');
     var $q = $('<h2>' + question.q + '</h2>');
     var $button;
     timer = setInterval(displayClock, 1000);
@@ -132,19 +132,25 @@ function handleAnswer(){
 function showAnswer(userAnswer) {
     var question = questions[questionIndex];
     $app.empty();
+    var $showAnswer = $('<div id="showAnswer>');
     var img = $('<div id="image"></div>');
     img.append('<img src=' + question.images + '>');
     $app.append('<h2>Answer -- </h2>');
-    $app.append('<h3>Correct Answer is: ' + question.answer + '</h3>');
-    $app.append('<h3>You Selected: ' + userAnswer + '</h3>');
+    // $app.append('<h3>Correct Answer: ' + question.answer + '</h3>');
+    // $app.append('<h3>You Selected: ' + userAnswer + '</h3>');
     if (remainingTime === 0) {
-        $app.append("<h2>Time's Out!</h2>");
+        $app.append("<h2><p>TIME'S OUT!</p></h2>");
+        $app.append('<h4>Correct Answer: ' + question.answer + '</h4>');
         $app.append(img);
         unanswered++;
     } else if (userAnswer === question.answer) {
+        $app.append('<h4>You Selected: ' + userAnswer + '</h4>');
+        $app.append("<h2><p>CONGRATS!</p></h2>");
         $app.append(img);
         correct++;
     } else {
+        $app.append("<h2><p>SORRY, WRONG!</p></h2>");
+        $app.append('<h4>Correct Answer: ' + question.answer + '</h4>');
         $app.append(img);
         incorrect++;
     }
@@ -157,10 +163,10 @@ function showAnswer(userAnswer) {
     }
     clearInterval(timer);
 }
-
+ 
 function showScore (){
     $app.empty();
-    var $score = $("<h2>Let's See How You Did: </h2>");
+    var $score = $("<h2>Let's See How You Did -- </h2>");
     $app.append($score);
     var correctAnswer = $('<p>Correct Answers: ' + correct + '</p>');
     var incorrectAnswer = $('<p>Incorrect Answers: ' + incorrect + '</p>');
