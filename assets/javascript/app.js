@@ -175,8 +175,9 @@ function showScore () {
     var unAnswered = $('<p>Unanswered: ' + unanswered + '</p>');
     $app.append(correctAnswer, incorrectAnswer, unAnswered);
     var $resetButton = $('<button>Play Again?</button>');
-    $resetButton.on('click', resetGame);
+    $resetButton.on('click', showQuestion);
     $app.append($resetButton);
+    resetGame();
 }
 
 function resetGame() {
@@ -184,8 +185,6 @@ function resetGame() {
     correct = 0;
     incorrect = 0;
     questionIndex = 0;
-    remainingTime;
-    timer;
 }
 
 
