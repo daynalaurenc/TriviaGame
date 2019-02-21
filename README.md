@@ -2,10 +2,10 @@
 
 A simple Trivia game using JavaScript for the logic and jQuery to manipulate HTML.
 
-The objective of the game is for Player to correctly answer Multiple Choice Questions before the timer runs out.
+[Trivia Game Link](https://daynalaurenc.github.io/TriviaGame/ "TriviaGame Link")
 
 ## Instructions:
-
+The objective of the game is for Player to correctly answer Multiple Choice Questions before the timer runs out.
 * Player pushes 'Start' button to begin the game
 * Countdown timer begins 
 * Player reads question and chooses the best suited answer.
@@ -14,4 +14,13 @@ The objective of the game is for Player to correctly answer Multiple Choice Ques
 * Next question will auto populate.
 * At the end, game will score Player on: Correct, Incorrect, and Unanswered.
 
-### Enjoy, and Good Luck!
+## Sample View
+
+![Train Schedule App Screenshot](/assets/images/screenshot.jpg/)
+
+## Technology
+
++ Javascript
++ jQuery
++ HTML5
++ CSS3
