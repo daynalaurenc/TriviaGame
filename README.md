@@ -14,10 +14,6 @@ The objective of the game is for Player to correctly answer Multiple Choice Ques
 * Next question will auto populate.
 * At the end, game will score Player on: Correct, Incorrect, and Unanswered.
 
-## Sample View
-
-![Train Schedule App Screenshot](/assets/images/screenshot.jpg/)
-
 ## Technology
 
 + Javascript
